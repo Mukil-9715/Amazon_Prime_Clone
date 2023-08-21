@@ -1,0 +1,12 @@
+/* .bg-black{
+} */
+.Nav{
+  background-color: black;
+  width: 100%
+}
+.flex{
+  display: flex;
+  /* place-content: center; */
+  align-items: center;
+  justify-content: space-around;
+}
