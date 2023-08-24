@@ -7,6 +7,91 @@
 .flex{
   display: flex;
   /* place-content: center; */
+  /* place-content: center; */
   align-items: center;
   justify-content: space-around;
+}
+.flex0{
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+
+}
+.Landingmodule{
+  width: 100%;
+  margin: "0px";
+  padding: "0px";
+}
+body{
+  margin: "0px";
+  padding: "0px";
+}
+.bgi1{
+  /* width:100%; */
+  height:100vh ;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+    to right,
+    #000 40%,
+    transparent 58%
+  ),
+  url("https://m.media-amazon.com/images/G/31/AmazonVideo/2019/MLP.jpg");
+}
+.bgi2{
+  height:100vh ;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://m.media-amazon.com/images/G/31/AmazonVideo/2021/X-site/MLP/TVOD/TVOD_MLP_Left.jpg");
+}
+.bgi3{
+    height:100vh ;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://images-na.ssl-images-amazon.com/images/G/01/digital/video/Magellan_MLP/MLP_Template_Image_Left.jpg");
+}
+.bgi4{
+  height:100vh ;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://m.media-amazon.com/images/G/01/digital/video/Magellan_MLP/IN-kids-30Jan._CB1517304519_.jpg" );
+}
+.wtclr{
+  color:white
+}
+.agn1{
+  padding: 280px 50px;
+  margin: 0px;
+}
+.agn2{
+  width: 27vw;
+  padding: 280px 0px 280px 1175px;
+  margin: 0px;
+}
+.agn3{
+  width: 33vw;
+  /* width: 40vw; */
+  padding: 280px 0px 280px 1050px;
+  margin: 0px;
+}
+.agn4{
+  width: 40vw;
+  padding: 280px 150px;
+  margin: 0px;
+}
+button{
+  padding: 15px 10px ;
+  background-color: rgb(71, 158, 209);
+  outline: none;
+  color:white;
+  font-weight: 700;
+  font-size: large;
+  border-radius: 10px;
+  border: none;
+
+
+}
+.footer{
+  background-color: rgb(34, 34, 34);
+  /* padding-block:"50px" ; */
 }

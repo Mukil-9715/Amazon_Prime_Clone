@@ -3,11 +3,13 @@ import "../../App.css";
 import {
   AppstoreOutlined,
   MailOutlined,
+  SearchOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
 
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
+import Profile from './../Profile';
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -28,37 +30,83 @@ function getItem(
 }
 
 const items: MenuProps["items"] = [
-  getItem("Home", "sub1", <MailOutlined />, [
-    getItem("Option 1", "1"),
-    getItem("Option 2", "2"),
-    getItem("Option 3", "3"),
-    getItem("Option 4", "4"),
+  getItem("Home", "Home", "", [
+    getItem("All", "All"),
+    getItem("Movies", "Movies"),
+    getItem("TV Shows", "TV Shows"),
   ]),
-
-  getItem("Store", "sub2", <AppstoreOutlined />, [
-    getItem("Option 5", "5"),
-    getItem("Option 6", "6"),
+  
+  getItem("Store", "Store", "", [
+    getItem("All", "All"),
+    getItem("Rent", "Rent"),
+    getItem("Channels", "Channels"),
   ]),
-  getItem("Live TV", "13"),
+  getItem("Live TV", "Live TV"),
 
   // { type: "divider" },
 
-  getItem("Categories", "sub4", <SettingOutlined />, [
-    getItem("Option 9", "9"),
-    getItem("Option 10", "10"),
-    getItem("Option 11", "11"),
-    getItem("Option 12", "12"),
+  getItem("Categories", "Categories", "", [
+    getItem('Genres', 'Genres', null, [getItem('Action and Adventure', 'Action and Adventure'), getItem('Anime', 'Anime'), 
+    getItem('Comedy', 'Comedy'), getItem('Documentary', 'Documentary')], 'group'),
+    getItem('Featured Collection', 'Featured Collection', null, [getItem('English', 'English'), getItem('Tamil', 'Tamil'),
+    getItem('Hindi', 'Hindi'), getItem('Malayalam', 'Malayalam')], 'group'),
   ]),
 
-  getItem("Option 14", "14"),
+];
+
+//? second menu
+
+type MenuItems = Required<MenuProps>["items"][number];
+
+function getItems(
+  label: React.ReactNode,
+  key: React.Key,
+  icon?: React.ReactNode,
+  children?: MenuItems[],
+  type?: "group"
+): MenuItems {
+  return {
+    key,
+    icon,
+    children,
+    label,
+    type,
+  } as MenuItems;
+}
+
+const item: MenuProps["items"] = [
+  getItems("Live TV", "Live TV", <SearchOutlined />),
+  getItems("Try for free", "Try for free", ),
+
+  getItems("EN", "Language","",[
+    getItems("English", "English"),
+    getItems("Polski", "Polski"),
+    getItems("Suomi", "Suomi"),
+    getItems('Tamil', 'Tamil'),
+    getItems('Hindi', 'Hindi'), 
+    getItems('Malayalam', 'Malayalam'),
+  ]),
+  
+  getItems("", "Profile", <Profile/>, [
+    getItems("Sign In", "Sign In"),
+    getItems("Help", "Help"),
+    getItems("Watch Anywhere", "Watch Anywhere"),
+  ]),
+  
 ];
 
 const Nav = () => {
   const [current, setCurrent] = useState("mail");
+  const [currents, setCurrents] = useState("mail");
 
   const onClick: MenuProps["onClick"] = (e: any) => {
     console.log("click ", e);
     setCurrent(e.key);
+  };
+
+  const onClicks: MenuProps["onClick"] = (e: any) => {
+    console.log("click ", e);
+    setCurrents(e.key);
   };
 
   return (
@@ -72,7 +120,7 @@ const Nav = () => {
       </div>
       <div>
         <Menu
-          style={{ width: "40vw", color: "white", backgroundColor: "black" }}
+          style={{ width: "25vw", color: "white", backgroundColor: "black" }}
           theme="dark"
           onClick={onClick}
           selectedKeys={[current]}
@@ -80,7 +128,14 @@ const Nav = () => {
           items={items}
         />
       </div>
-      <div></div>
+      <div> <Menu
+          style={{ width: "20vw", color: "white", backgroundColor: "black" }}
+          theme="dark"
+          onClick={onClicks}
+          selectedKeys={[currents]}
+          mode="horizontal"
+          items={item}
+        /></div>
     </div>
   );
 };
